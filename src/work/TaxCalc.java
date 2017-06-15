@@ -69,7 +69,7 @@ public class TaxCalc {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter your gross annual income: ");
 		salary = sc.nextDouble();
-		System.out.println("Please enter your province (eg. ON for Ontario): ");
+		System.out.println("Please enter your province: ");
 		address = sc.next();
 //		sc.close();
 		
