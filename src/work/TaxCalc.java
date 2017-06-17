@@ -71,11 +71,12 @@ public class TaxCalc {
 		salary = sc.nextDouble();
 		System.out.println("Please enter your province: ");
 		address = sc.next();
-//		sc.close();
 		
 		TaxCalc calculator = new TaxCalc(salary, address);
 		if(calculator.getTax() != 0.0) {
 			System.out.println("Your annual tax is: " + calculator.getTax());
 		}
+		
+		sc.close();
 	}
 }
