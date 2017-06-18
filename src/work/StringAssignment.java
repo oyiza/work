@@ -98,23 +98,125 @@ public class StringAssignment {
 	
 	/* Palindrome */
 	public void question6() {
-		String fword = "Never odd or even";
+//		String fword = "Never odd or even";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a word:");
+		String fword = sc.nextLine();
 		String sword = "";
 		
 		sword = fword.replaceAll("\\s+", "");
-		System.out.println(sword);
+//		System.out.println(sword);
 		String reverse = new StringBuffer(sword).reverse().toString();
-		System.out.println(reverse);
+//		System.out.println(reverse);
 		
-		if(reverse.equalsIgnoreCase(fword)) {
+		if(reverse.equalsIgnoreCase(sword)) {
 			System.out.println("\"" + fword +"\"" + " is a palindrome.");
 		} else {
 			System.out.println("\"" + fword +"\"" + " is not a palindrome.");
 		}
+		
+		sc.close();
+	}
+	
+	public boolean isPalindrome(String word) {
+		String reverse = new StringBuffer(word).reverse().toString();
+		return reverse.equalsIgnoreCase(word);
 	}
 	
 	public void question7() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter input");
+		String input = sc.nextLine();
+		String output = input.replaceAll("[A-Za-z!@#%&()_\\$ ]", "");
+		System.out.println("Output: " + output);
 		
+		sc.close();
+	}
+	
+	public void question8() {
+//		String input = "Numb#er of  vowels!";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter statement:");
+		String input = sc.nextLine();
+		String forVowels = "[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ!@#%&()_\\$0-9 ]+";
+		String vowels = input.replaceAll(forVowels, "");
+		String consonants = input.replaceAll("[aeiouAEIOU!@#%&()_\\$0-9 ]+", "");
+		String spaces = input.replaceAll("[A-Za-z0-9!@#%&()_\\$0-9]+", "");
+		String specialChars = input.replaceAll("[A-Za-z0-9 ]", "");
+//		System.out.println(specialChars);
+		
+		//Number of vowels
+		System.out.println("Number of vowels in input: " + vowels.length());
+		//Number of consonants
+		System.out.println("Number of consonants in input: " + consonants.length());
+		//Number of white spaces
+		System.out.println("Number of white spaces in input: " + spaces.length());
+		//Number of special characters
+		System.out.println("Number of special characters in input: " + specialChars.length());
+		
+		sc.close();
+	}
+	
+	public void question9() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter sentence: ");
+//		String sentence = "Hello my name is hello my";
+		String sentence = sc.nextLine();
+		String[] parts = sentence.split(" ");
+		for(int i = 0; i < parts.length; i++) {
+			for(int j = i+1; j < parts.length; j++) {
+				if(parts[i].equalsIgnoreCase(parts[j])) {
+					System.out.print(parts[j] + ", ");
+				}
+			}
+		}
+		
+		sc.close();
+	}
+	
+	public void question10() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter statement: ");
+		String palindrome = sc.nextLine();
+//		String palindrome = "hanah aba men hannah  cow abba";
+		String[] parts = palindrome.split(" ");
+		int position = 0;
+		int length = 0;
+		
+		for(int i = 0; i < parts.length; i++) {
+			if(isPalindrome(parts[i])){
+				if(parts[i].length() > length) {
+					length = parts[i].length();
+					position = i;
+				}
+			}
+		}
+		
+		System.out.println(parts[position]);
+		
+		sc.close();
+	}
+	
+	public void question11() {
+		
+	}
+	
+	public void question12() {
+		String input = "Hi Jello World";
+		String[] parts = input.split(" ");
+		String temp1 = parts[0].substring(0, 1);
+		String temp2 = "";
+		for(int i = 1; i < parts.length; i++) {
+			temp2 = parts[i].substring(0, 1);
+			parts[i].replaceFirst("[A-Za-z0-9]{1}", temp1); //TODO fix this!!!!!!
+			temp1 = temp2;
+		}
+		
+		for(int i = 0; i < parts.length; i++) {
+			System.out.print(parts[i] + " ");
+		}
+		System.out.println();
+		System.out.println(temp1);
 	}
 
 	public static void main(String[] args) {
@@ -125,6 +227,12 @@ public class StringAssignment {
 //		assignment.question3();
 //		assignment.question4();
 //		assignment.question5();
-		assignment.question6();
+//		assignment.question6();
+//		assignment.question7();
+//		assignment.question8();
+//		assignment.question9();
+//		assignment.question10();
+//		assignment.question11();
+		assignment.question12();
 	}
 }
