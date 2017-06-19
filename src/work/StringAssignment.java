@@ -47,7 +47,7 @@ public class StringAssignment {
 		String fname = sc.nextLine();
 		System.out.print("Please enter last name --> ");
 		String lname = sc.nextLine();
-		//TODO ensure format
+		//TODO ensure date format
 		System.out.print("Please provide date of birth (dd-mm-yyyy) --> ");
 		String dob = sc.nextLine();
 		
@@ -71,7 +71,7 @@ public class StringAssignment {
 		sc.close();
 	}
 	
-	/* replace tags in a given sentence? */
+	/* TODO replace tags in a given sentence? */
 	public void question4() {
 		
 	}
@@ -118,7 +118,7 @@ public class StringAssignment {
 		sc.close();
 	}
 	
-	public boolean isPalindrome(String word) {
+	private boolean isPalindrome(String word) {
 		String reverse = new StringBuffer(word).reverse().toString();
 		return reverse.equalsIgnoreCase(word);
 	}
@@ -208,15 +208,89 @@ public class StringAssignment {
 		String temp2 = "";
 		for(int i = 1; i < parts.length; i++) {
 			temp2 = parts[i].substring(0, 1);
-			parts[i].replaceFirst("[A-Za-z0-9]{1}", temp1); //TODO fix this!!!!!!
+			parts[i].replaceFirst("[^A-Za-z0-9]{1}", temp1); //TODO fix regex!!!!!!
 			temp1 = temp2;
 		}
+		//TODO assign first letter of last word to the first letter of first word
 		
 		for(int i = 0; i < parts.length; i++) {
 			System.out.print(parts[i] + " ");
 		}
 		System.out.println();
 		System.out.println(temp1);
+	}
+	
+	public void question13() {
+//		String input = "This is a sentence with a looooooooooong word";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Input:");
+		String input = sc.nextLine();
+		String[] parts = input.split(" ");
+		int length = parts[0].length();
+		int position = 0;
+		
+		for(int i = 1; i < parts.length; i++) {
+			if(parts[i].length() > length) {
+				length = parts[i].length();
+				position = i;
+			}
+		}
+		
+		System.out.println("Longest word is: " + parts[position]);
+		
+		sc.close();
+	}
+	
+	public void question14() {
+//		String input = "Sentence to be reversed";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter sentence to be reversed:");
+		String input = sc.nextLine();
+		String[] parts = input.split(" ");
+		String[] reversed = new String[parts.length];
+		
+		for(int i = 0; i < parts.length; i++) {
+			reversed[i] = new StringBuffer(parts[i]).reverse().toString();
+		}
+		
+		System.out.println("Original: " + input);
+		System.out.print("Reversed: ");
+		for(int i = 0; i < reversed.length; i ++) {
+			System.out.print(reversed[i] + " ");
+		}
+		
+		sc.close();
+	}
+	
+	//TODO
+	public void question15() {
+		
+	}
+	
+	public void question16() {
+//		String input = "one two three";
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter sentence:");
+		String input = sc.nextLine();
+		String[] parts = input.split(" ");
+		
+		for(int i = 0; i < parts.length; i++) {
+			for(int j = 0; j < i+1; j++) {
+				System.out.print(parts[i] + " ");
+			}
+		}
+		
+		sc.close();
+	}
+	
+	//TODO
+	public void question17() {
+		
+	}
+	
+	//TODO
+	public void question18() {
+		
 	}
 
 	public static void main(String[] args) {
@@ -234,5 +308,11 @@ public class StringAssignment {
 //		assignment.question10();
 //		assignment.question11();
 		assignment.question12();
+//		assignment.question13();
+//		assignment.question14();
+//		assignment.question15();
+//		assignment.question16();
+//		assignment.question17();
+//		assignment.question18();
 	}
 }
